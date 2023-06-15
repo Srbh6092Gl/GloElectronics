@@ -6,6 +6,7 @@ import com.glo.app.model.Customer;
 import com.glo.app.model.Product;
 import com.glo.app.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,9 @@ public class CustomerController {
 
     //Returning all customers
     @GetMapping
-    public List<Customer> getAllCustomers(){
-        return customerService.getAll();
+    public Page<Customer> getAllCustomers(){
+//        return customerService.getAll();
+        return customerService.getAllSorted();
     }
 
     //Adding customers

@@ -6,6 +6,10 @@ import com.glo.app.model.Customer;
 import com.glo.app.model.Product;
 import com.glo.app.repository.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +21,12 @@ public class CustomerServiceImpl implements CustomerService{
     CustomerRepo customerRepo;
 
     @Override
-    public List<Customer> getAll() {
-        return customerRepo.findAll();
+    public Page<Customer> getAllSorted() {
+        //showing second page: 1
+        //size of a page:5
+        //sorted by customerName
+        Pageable pageable = PageRequest.of(1,5, Sort.by("customerName"));
+        return customerRepo.findAll(pageable);
     }
 
     @Override

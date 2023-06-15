@@ -4,6 +4,8 @@ import com.glo.app.exception.CustomerNotFoundException;
 import com.glo.app.exception.RequestFieldNullException;
 import com.glo.app.model.Customer;
 import com.glo.app.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,5 +18,5 @@ public interface CustomerService {
 
     String delete(int customerId) throws CustomerNotFoundException;
 
-    List<Customer> getAll();
+    Page<Customer> getAllSorted();
 }
